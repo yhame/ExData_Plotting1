@@ -9,8 +9,10 @@ rows <- c(rows,which(D[,1] == "2007-02-02"))
 
 D <- D[rows,]
 
-png(filename="./plot1.png")
-hist(as.numeric(as.character(D$Global_active_power)), main = "Global Active Power",
-     ylab = "Frequency", xlab="Global Active Power (kilowatts)", ylim = c(0,1200),
-     col = "red")
+nValues <- length(rows)
+
+png(filename="./plot2.png")
+plot(as.numeric(as.character(D$Global_active_power)),
+     xlab = "", ylab="Global Active Power (kilowatts)", type = "l",xaxt='n')
+axis(side = 1,at = c(1,(nValues/2)+1,nValues),labels = c("Thu", "Fri", "Sat"))
 dev.off()
